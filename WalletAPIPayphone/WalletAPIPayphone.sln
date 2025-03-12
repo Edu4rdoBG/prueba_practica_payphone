@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletAPIPayphone", "WalletAPIPayphone\WalletAPIPayphone.csproj", "{BE4E2F96-3E00-4285-B6D2-D2281F9F3B1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletAPIPayphone.Tests", "WalletAPIPayphone.Tests\WalletAPIPayphone.Tests.csproj", "{3739F0B4-3988-46B1-9C17-CCBF3779558D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE4E2F96-3E00-4285-B6D2-D2281F9F3B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE4E2F96-3E00-4285-B6D2-D2281F9F3B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE4E2F96-3E00-4285-B6D2-D2281F9F3B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE4E2F96-3E00-4285-B6D2-D2281F9F3B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3739F0B4-3988-46B1-9C17-CCBF3779558D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3739F0B4-3988-46B1-9C17-CCBF3779558D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3739F0B4-3988-46B1-9C17-CCBF3779558D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3739F0B4-3988-46B1-9C17-CCBF3779558D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
