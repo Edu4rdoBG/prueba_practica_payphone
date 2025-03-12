@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace WalletAPIPayphone.Domain.Entities
 {
@@ -12,6 +13,7 @@ namespace WalletAPIPayphone.Domain.Entities
         public int WalletId { get; set; }
 
         [ForeignKey("WalletId")]
+        [JsonIgnore] 
         public Wallet Wallet { get; set; }
 
         [Required]
