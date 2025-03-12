@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WalletAPIPayphone.Domain.Entities;
 using WalletAPIPayphone.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WalletAPIPayphone.Controllers
 {
+
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TransactionController : ControllerBase
@@ -15,6 +18,7 @@ namespace WalletAPIPayphone.Controllers
             _transactionService = transactionService;
         }
 
+        [AllowAnonymous] // Permitir acceso sin autenticacion solo al listado de transacciones
         [HttpGet("wallet/{walletId}")]
         public async Task<ActionResult<IEnumerable<Transaction>>> GetTransactions(int walletId)
         {

@@ -2,22 +2,42 @@
 using WalletAPIPayphone.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
+using System.Net.Http.Headers;
+using System.Text.Json;
 
 namespace WalletAPIPayphone.Tests
 {
     public class TransactionControllerTests : IClassFixture<WebApplicationFactory<Program>>
     {
         private readonly HttpClient _client;
-
+        private string token = "";
         public TransactionControllerTests(WebApplicationFactory<Program> factory)
         {
             // Crea un cliente HTTP para interactuar con la API en memoria
             _client = factory.CreateClient();
         }
 
+        private async Task CrearToken() {
+            if (token == "")
+            {
+                var loginRequest = new { username = "admin", password = "1234" };
+                var loginResponse = await _client.PostAsJsonAsync("/api/auth/login", loginRequest);
+                loginResponse.EnsureSuccessStatusCode();
+
+                var jsonString = await loginResponse.Content.ReadAsStringAsync();
+                using var jsonDoc = JsonDocument.Parse(jsonString);
+                token = jsonDoc.RootElement.GetProperty("token").GetString()!;
+
+            }
+        }
+
         [Fact]
         public async Task CreateTransaction_ShouldReturnCreated_WhenValidTransaction()
         {
+            await CrearToken();
+
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim('"'));
+
             // Arrange: Crear una billetera para simular una transferencia
             var wallet = new Wallet
             {
@@ -44,6 +64,10 @@ namespace WalletAPIPayphone.Tests
         [Fact]
         public async Task CreateTransaction_ShouldReturnBadRequest_WhenInsufficientFunds()
         {
+            await CrearToken();
+
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.Trim('"'));
+
             // Arrange: Crear una billetera con un saldo insuficiente
             var wallet = new Wallet
             {

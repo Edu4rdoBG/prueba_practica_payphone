@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WalletAPIPayphone.Application.Services;
 using WalletAPIPayphone.Domain.Entities;
 
 namespace WalletAPIPayphone.API.Controllers
 {
+
+    [Authorize] // Solo usuarios autenticados pueden acceder a Wallet
     [Route("api/[controller]")]
     [ApiController]
     public class WalletController : ControllerBase
